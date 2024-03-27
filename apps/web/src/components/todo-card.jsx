@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import { Todo } from "@/database/schema";
 
 /**
  *
@@ -25,23 +25,26 @@ export function TodoCard() {
         <CardDescription>What you need to do today</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="flex items-center gap-4">
-          <Checkbox defaultChecked id="email" />
-          <Label htmlFor="email">Email team about project updates</Label>
-        </div>
-        <div className="flex items-center gap-4">
-          <Checkbox id="meeting" />
-          <Label htmlFor="meeting">Prepare for the afternoon meeting</Label>
-        </div>
-        <div className="flex items-center gap-4">
-          <Checkbox id="review" />
-          <Label htmlFor="review">Review the new design proposals</Label>
-        </div>
-        <div className="flex items-center gap-4">
-          <Input placeholder="Add a new todo" type="text" />
-          <Button>Add Todo</Button>
-        </div>
+        <TodoListItem completed={false} title="something" />
+        <TodoListItem completed={false} title="something1" />
+        <TodoListItem completed={false} title="something2" />
+        <TodoListItem completed={false} title="something3" />
+        <TodoListItem completed={false} title="something4" />
       </CardContent>
     </Card>
+  );
+}
+
+/**
+ *
+ * @param {Todo} todo
+ * @returns {React.ReactElement}
+ */
+function TodoListItem(todo) {
+  return (
+    <div className="flex items-center gap-4">
+      <Checkbox id="email" />
+      <Label htmlFor="email">{todo.title}</Label>
+    </div>
   );
 }
