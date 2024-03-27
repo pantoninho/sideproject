@@ -30,4 +30,16 @@
 - tailwindcss: https://tailwindcss.com
 - tailwindcss intelissense vscode plugin
 
+- shadcn
+
 - v0: https://v0.dev
+
+# persistance
+
+- external services:
+
+  - neon
+  - supabase
+  - turso (https://turso.tech): SQLITE
+
+- query-builder/ORM: https://orm.drizzle.team/docs/
