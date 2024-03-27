@@ -1,14 +1,18 @@
-# webapps
+# pantostack
 
-- nextjs: https://nextjs.org/learn
+## monorepo structure
 
-- linting:
-  - eslint: https://eslint.org/docs/user-guide/getting-started
-  - prettier: https://prettier.io/docs/en/install.html
-  - eslint-plugin-prettier
-  - eslint-config-prettier
-  - eslint-plugin-jsdoc
-  - basic eslint file:
+- `apps/`: deployable applications
+- `packages/`: reusable packages
+- `.eslintrc`: base eslint configuration
+
+## base linting
+
+- [`eslint`](https://eslint.org/)
+- [`prettier`](https://prettier.io/)
+- [`eslint-plugin-prettier`]()
+- [`eslint-config-prettier`]()
+- [`eslint-plugin-jsdoc`]()
 
 ```json
 {
@@ -27,19 +31,19 @@
 }
 ```
 
-- tailwindcss: https://tailwindcss.com
-- tailwindcss intelissense vscode plugin
+## apps
 
-- shadcn
+### `apps/web`: [`nextjs`](https://nextjs.org/learn) application
 
-- v0: https://v0.dev
+#### ui
 
-# persistance
+- [`tailwindcss`](https://tailwindcss.com/docs): utility-first css classes
+  - use `tailwindcss-intellisense` vscode plugin for better developer experience
+  - use `eslint-plugin-tailwindcss` for linting
+- [`shadcn`](https://ui.shadcn.com): unstyled tailwind component library
+- [`v0`](https://v0.dev): AI generated prototypes of ui components that uses `shadcn`
 
-- external services:
+#### data layer
 
-  - neon
-  - supabase
-  - turso (https://turso.tech): SQLITE
-
-- query-builder/ORM: https://orm.drizzle.team/docs/
+- [`neon`](https://neon.tech): psql databases as service
+- [`drizzle`](https://drizzle.team): query builder/ORM

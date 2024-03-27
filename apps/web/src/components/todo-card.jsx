@@ -20,7 +20,7 @@ import { db } from "@/database";
 import { LoaderCircle } from "lucide-react";
 
 /**
- *
+ * @returns {React.ReactElement} TodoCard
  */
 export function TodoCard() {
   return (
@@ -45,7 +45,7 @@ export function TodoCard() {
 }
 
 /**
- *
+ * @returns {React.ReactElement} TodoList
  */
 async function TodoList() {
   /**
@@ -63,9 +63,8 @@ async function TodoList() {
 }
 
 /**
- *
- * @param {Todo} todo
- * @returns {React.ReactElement}
+ * @param {Todo} todo a todo
+ * @returns {React.ReactElement} TodoListItem
  */
 function TodoListItem(todo) {
   return (
