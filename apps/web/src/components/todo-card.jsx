@@ -52,7 +52,6 @@ async function TodoList() {
    * @type {Todo[]}
    */
   const todoList = await db.select().from(todos);
-  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   return (
     <>
