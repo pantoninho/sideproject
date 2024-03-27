@@ -1,12 +1,20 @@
 import { z } from "zod";
+import { serial, text, pgTableCreator, boolean } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
+const pgTable = pgTableCreator((name) => `sideproject_${name}`);
+
+export const todos = pgTable("todos", {
+  id: serial("id").primaryKey(),
+  title: text("name").notNull(),
+  completed: boolean("completed").notNull().default(false),
+});
+
+/**
+ * @typedef {z.infer<typeof NewTodo>} NewTodo
+ */
+export const NewTodo = createInsertSchema(todos);
 /**
  * @typedef {z.infer<typeof Todo>} Todo
  */
-const Todo = z.object({
-  id: z.string(),
-  /* this is the title of the todo */
-  title: z.string(),
-  // this is a comment
-  completed: z.boolean(),
-});
+export const Todo = createSelectSchema(todos);
