@@ -26,3 +26,6 @@
   "rules": {}
 }
 ```
+
+- tailwindcss: https://tailwindcss.com
+- tailwindcss intelissense vscode plugin
