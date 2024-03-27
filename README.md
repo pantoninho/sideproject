@@ -1,5 +1,7 @@
 # pantostack
 
+- TODO: authentication
+
 ## monorepo structure
 
 - `apps/`: deployable applications
