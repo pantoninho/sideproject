@@ -29,3 +29,5 @@
 
 - tailwindcss: https://tailwindcss.com
 - tailwindcss intelissense vscode plugin
+
+- v0: https://v0.dev
