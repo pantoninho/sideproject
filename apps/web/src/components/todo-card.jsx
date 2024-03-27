@@ -11,8 +11,13 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import React from "react";
-import { Todo } from "@/database/schema";
+import React, { Suspense } from "react";
+import { Todo, todos } from "@/database/schema";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { addTodo } from "@/app/actions/add-todo";
+import { db } from "@/database";
+import { LoaderCircle } from "lucide-react";
 
 /**
  *
@@ -25,13 +30,35 @@ export function TodoCard() {
         <CardDescription>What you need to do today</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <TodoListItem completed={false} title="something" />
-        <TodoListItem completed={false} title="something1" />
-        <TodoListItem completed={false} title="something2" />
-        <TodoListItem completed={false} title="something3" />
-        <TodoListItem completed={false} title="something4" />
+        <Suspense fallback={<LoaderCircle className="animate-spin" />}>
+          <TodoList />
+        </Suspense>
+        <form action={addTodo}>
+          <div className="flex items-center gap-4">
+            <Input placeholder="Add a new todo" type="text" name="title" />
+            <Button>Add Todo</Button>
+          </div>
+        </form>
       </CardContent>
     </Card>
+  );
+}
+
+/**
+ *
+ */
+async function TodoList() {
+  /**
+   * @type {Todo[]}
+   */
+  const todoList = await db.select().from(todos);
+
+  return (
+    <>
+      {todoList.map((todo) => (
+        <TodoListItem key={todo.id} {...todo} />
+      ))}
+    </>
   );
 }
 
